@@ -38,6 +38,12 @@ h1,h2,p{margin:0}
 .cta:active{transform:scale(.97)}
 .cta:disabled{background:#302833;color:#bdb2c0;box-shadow:none;animation:none;cursor:default}
 @keyframes pulse{0%,100%{box-shadow:0 0 10px #ff285755,0 0 22px #ff285722}50%{box-shadow:0 0 18px #ff2857a8,0 0 42px #ff285755}}
+.sound-toggle{position:absolute;z-index:30;top:3%;right:5%;width:42px;height:42px;display:grid;place-items:center;border:1px solid #ffffff35;border-radius:50%;background:#251d29c9;color:var(--white);cursor:pointer;backdrop-filter:blur(8px)}
+.sound-toggle svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.sound-toggle .sound-off{display:none}
+.sound-toggle[aria-pressed="true"] .sound-on{display:none}
+.sound-toggle[aria-pressed="true"] .sound-off{display:block}
+.sound-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .stars,.confetti-layer,.rays{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .star{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff7bf;box-shadow:0 0 8px 2px #ffe69b;animation:twinkle 2s ease-in-out infinite}
 .star:after{content:"";position:absolute;left:50%;top:-4px;width:1px;height:11px;background:#fff9;transform:translateX(-50%)}
@@ -48,21 +54,30 @@ h1,h2,p{margin:0}
 @keyframes rayTurn{to{transform:rotate(360deg)}}
 
 /* Scene 1  */
-#scene1 .gift-wrap{position:absolute;left:19%;top:8%;width:62%;height:32%;display:grid;place-items:center;animation:giftBob 2.5s ease-in-out infinite;filter:drop-shadow(0 0 24px #ff285755);cursor:pointer}
+#scene1 .gift-wrap{position:absolute;left:15%;top:20%;width:70%;height:32%;display:grid;place-items:center;animation:giftBob 2.5s ease-in-out infinite;filter:drop-shadow(0 0 24px #ff285755);cursor:pointer}
+#scene1 .bg-glow:after{content:"";position:absolute;left:-9%;bottom:-6%;width:44%;height:31%;pointer-events:none;background:radial-gradient(ellipse at 30% 78%,#ffd34d88 0%,#ff8b3299 20%,#ff3e4f66 42%,transparent 72%);filter:blur(10px);animation:lampGlow 3.2s ease-in-out infinite}
+@keyframes lampGlow{50%{opacity:.72;transform:scale(1.08)}}
 #scene1 .gift-base{width:100%;height:auto;object-fit:contain;position:absolute;bottom:0}
-#scene1 .gift-lid{width:100%;height:auto;object-fit:contain;position:absolute;top:0;transform-origin:50% 88%;animation:lidPeek 2.3s ease-in-out infinite}
+#scene1 .gift-lid{width:100%;height:auto;object-fit:contain;position:absolute;top:-25%;transform-origin:50% 88%;animation:lidPeek 2.3s ease-in-out infinite}
 @keyframes giftBob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-7px) rotate(-1deg)}}
 @keyframes lidPeek{0%,65%,100%{transform:rotate(0) translateY(0)}78%,88%{transform:rotate(-5deg) translateY(-9px)}}
-#scene1 .hand{position:absolute;left:63%;top:24%;width:17%;height:11%;animation:handTap 1.2s ease-in-out infinite;filter:drop-shadow(0 0 8px #fff7)}
-@keyframes handTap{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-7px,8px) scale(.94)}}
-#scene1 .copy{top:45%}
-#scene1 .copy .headline{margin-top:3%}
+
+#scene1 .hand-tap{position:absolute;right:18%;top:36%;width:18%;height:auto;z-index:10;animation:handAnim 1.4s ease-in-out infinite;pointer-events:none;filter:drop-shadow(0 0 10px #fff8)}
+@keyframes handAnim{
+  0%,100%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(-6px,6px) scale(.92)}
+}
+
+#scene1 .copy{position:absolute;left:6%;width:88%;top:63%;text-align:center}
+#scene1 .copy .eyebrow{margin-bottom:18px}
+#scene1 .copy .headline{margin-bottom:12px;font-size:clamp(26px,7.5cqw,36px)}
+#scene1 .copy .subline{color:#cbbccb;font-size:clamp(12px,3.3cqw,15px)}
 
 /* Scene 2 */
 #scene2 .stage-glow{position:absolute;z-index:0;left:8%;top:12%;width:84%;height:45%;pointer-events:none;filter:blur(18px);background:radial-gradient(ellipse at 50% 30%,#ff5b83a6 0%,#ff285755 35%,transparent 72%),radial-gradient(ellipse at 50% 85%,#ffc83d80 0%,#ff285744 35%,transparent 72%)}
-#scene2 .lid-fly{position:absolute;z-index:4;left:8%;top:4%;width:75%;height:auto;object-fit:contain;animation:lidFly .95s cubic-bezier(.2,.8,.2,1) both}
+#scene2 .lid-fly{position:absolute;z-index:4;left:8%;top:4%;width:82.5%;height:auto;object-fit:contain;animation:lidFly .95s cubic-bezier(.2,.8,.2,1) both}
 @keyframes lidFly{0%{transform:translate(70%,100%) rotate(0) scale(1.2);opacity:0}55%{opacity:1}100%{transform:translate(-10%,-25%) rotate(-30deg) scale(.55);opacity:1}}
-#scene2 .box-open{position:absolute;z-index:3;left:17%;top:22%;width:62%;height:auto;object-fit:contain;filter:drop-shadow(0 0 22px #ff285766);animation:pop .7s ease both;cursor:pointer;pointer-events:auto}
+#scene2 .box-open{position:absolute;z-index:3;left:17%;top:22%;width:62%;height:auto;object-fit:contain;filter:drop-shadow(0 0 22px #ff285766);animation:pop .7s ease both}
 @keyframes pop{from{transform:scale(.45);opacity:0}to{transform:scale(1);opacity:1}}
 #scene2 .prize-card{position:absolute;z-index:1;left:16%;top:10%;width:68%;height:23%;object-fit:contain;animation:cardRise .8s .25s both}
 @keyframes cardRise{from{opacity:0;transform:translateY(30px) scale(.8)}to{opacity:1;transform:translateY(0) scale(1)}}
@@ -70,38 +85,37 @@ h1,h2,p{margin:0}
 #scene2 .girls img{width:48%;height:100%;object-fit:contain;margin:0 -2%;animation:girlReveal .65s .4s both}
 #scene2 .girls img:nth-child(2){animation-delay:.55s}
 @keyframes girlReveal{from{opacity:0;transform:translateY(22px) rotate(4deg)}to{opacity:1;transform:translateY(0) rotate(0)}}
-#scene2 .copy{top:50%}
+#scene2 .copy{top:64%;text-align:center}
 
 /* Scene 3 */
-#scene3 .copy{top:1%;text-align:center}
-.fan{position:absolute;left:12%;top:10%;width:76%;height:32%}
+#scene3 .copy{top:62%;text-align:center}
+.fan{position:absolute;left:12%;top:10%;width:76%;height:38%}
 .fan img{position:absolute;width:60.2%;height:100%;object-fit:contain}
 .fan img:nth-child(1){left:-10%;top:-10%;transform:rotate(-10deg)}
 .fan img:nth-child(2){left:20%;top:35%;z-index:2;transform:rotate(0)}
 .fan img:nth-child(3){right:-10%;top:-10%;transform:rotate(10deg)}
-.scratch-intro{position:absolute;z-index:4;left:10%;top:38%;width:80%;height:25%;object-fit:contain;filter:drop-shadow(0 8px 12px #0008);animation:floatCard 2.5s ease-in-out infinite;cursor:pointer}
+.scratch-intro{position:absolute;z-index:4;left:10%;top:38%;width:80%;height:25%;object-fit:contain;filter:drop-shadow(0 8px 12px #0008);animation:floatCard 2.5s ease-in-out infinite}
 @keyframes floatCard{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-8px) rotate(1deg)}}
-#scene3 .copy.bottom{top:56%;text-align:left}
 
 /* Scene 4 */
-#scene4 .copy{top:5%;text-align:center}
+#scene4 .copy{top:6%;text-align:center}
 #scene4 .copy .headline{font-size:clamp(22px,6.5cqw,30px)}
 #scene4 .copy .subline{margin-top:2%}
-.scratch-wrap{position:absolute;left:7%;top:20%;width:86%;height:43%;border-radius:18px;overflow:hidden;box-shadow:0 0 0 1px #ffffff66,0 12px 32px #0008;background:#100d13}
-.scratch-under{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}
+.scratch-wrap{position:absolute;left:7%;top:22%;width:86%;height:43%;border-radius:18px;overflow:hidden;box-shadow:0 12px 32px #0008;background:#100d13}
+.scratch-under{position:absolute;left:-7%;top:-16.5%;width:114%;height:133%;object-fit:fill}
 .scratch-cover{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair}
 .scratch-hint{position:absolute;z-index:5;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;color:#261b2d;font-weight:900;letter-spacing:.04em;font-size:clamp(17px,5cqw,24px);pointer-events:none;text-shadow:0 1px 0 #fff8;animation:hintPulse 1.5s ease-in-out infinite}
 .scratch-hint:before{content:"✦";display:block;font-size:1.5em;margin-bottom:.2em}
 @keyframes hintPulse{50%{transform:translateY(-50%) scale(1.06);opacity:.65}}
-.scratch-progress{position:absolute;left:7%;top:66%;width:86%;height:8px;border-radius:99px;background:#342b38;overflow:hidden}
+.scratch-progress{position:absolute;left:7%;top:68%;width:86%;height:8px;border-radius:99px;background:#342b38;overflow:hidden}
 .scratch-progress>i{display:block;width:0;height:100%;background:linear-gradient(90deg,#ff2857,#ffc1d0);border-radius:99px;transition:width .12s}
-.progress-label{position:absolute;top:68%;left:7%;width:86%;text-align:center;font-size:clamp(10px,2.7cqw,12px);color:#bcb0bf}
+.progress-label{position:absolute;top:71%;left:7%;width:86%;text-align:center;font-size:clamp(10px,2.7cqw,12px);color:#bcb0bf}
 
 /* Scene 5 */
 #scene5 .copy{top:6%;text-align:center}
 #scene5 .copy .headline{font-size:clamp(25px,7cqw,33px)}
 .win-rays{position:absolute;inset:5% -25% 20%;background:repeating-conic-gradient(from 0deg at 50% 35%,#ffb72a22 0deg 7deg,transparent 7deg 17deg);animation:rayTurn 35s linear infinite;mask-image:radial-gradient(ellipse,black 0%,transparent 72%)}
-.win-card{position:absolute;left:17%;top:20%;width:66%;height:37%;object-fit:contain;filter:drop-shadow(0 0 12px #ffc83d) drop-shadow(0 0 28px #ff285766);animation:winGlow 1.8s ease-in-out infinite alternate;cursor:pointer}
+.win-card{position:absolute;left:17%;top:25%;width:66%;height:37%;object-fit:contain;filter:drop-shadow(0 0 12px #ffc83d) drop-shadow(0 0 28px #ff285766);animation:winGlow 1.8s ease-in-out infinite alternate}
 @keyframes winGlow{to{filter:drop-shadow(0 0 24px #ffc83d) drop-shadow(0 0 45px #ff2857aa);transform:scale(1.025)}}
 #scene5 .scratch-progress{top:62%;height:9px}
 #scene5 .progress-label{top:64%;color:#fff}
@@ -131,15 +145,15 @@ h1,h2,p{margin:0}
 @media (max-height:620px){
   .cta{min-height:36px;bottom:2.5%}
   .headline{font-size:clamp(19px,6cqw,26px)}
-  #scene1 .gift-wrap{top:6%;height:30%}
+  #scene1 .gift-wrap{top:15%;height:30%}
+  #scene1 .copy{top:56%}
   .scratch-wrap{top:18%;height:38%}
   .timer-area{top:25%}
 }
 
-/* ================= VISUAL POLISH 2.0 ================= */
+/* ================= VISUAL================= */
 #game::after{content:"";position:absolute;inset:0;z-index:40;pointer-events:none;border:1px solid #ffffff12;box-shadow:inset 0 0 70px #0008,inset 0 0 2px #ffffff20}
 .scene:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(145deg,#ffffff08,transparent 28%,transparent 72%,#ff4b7810);opacity:.8}
-/* Keep each scene element's original absolute positioning intact. */
 .scene .bg-glow,.scene .stars,.scene .confetti-layer,.scene .rays,.scene .win-rays{position:absolute}
 .copy{filter:drop-shadow(0 3px 12px #0008);animation:copyArrive .65s cubic-bezier(.2,.8,.2,1) both}
 @keyframes copyArrive{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
@@ -156,7 +170,9 @@ h1,h2,p{margin:0}
 #scene1 .gift-wrap:after{content:"";position:absolute;inset:10% -10%;border-radius:50%;background:radial-gradient(ellipse,#ff2d6330,transparent 68%);z-index:-1;animation:giftAura 2.8s ease-in-out infinite}
 @keyframes giftAura{50%{transform:scale(1.18);opacity:.55}}
 #scene1 .gift-lid{filter:drop-shadow(0 0 8px #ff789c99)}
-#scene1 .hand{filter:drop-shadow(0 0 8px #fff9) drop-shadow(0 0 18px #ff477a77)}
+#scene4 #scratchActionBtn{background:rgba(200,189,200,.16);color:var(--white);border:1px solid #ffffff35;box-shadow:inset 0 1px #ffffff18;animation:none}
+#scene4 #scratchActionBtn:before{display:none}
+#scene4 #scratchActionBtn:after{border-color:#ffffff30}
 #scene2 .box-open{filter:drop-shadow(0 0 15px #ff2857aa) drop-shadow(0 0 40px #ffc83d55);animation:boxReveal .85s cubic-bezier(.15,.85,.25,1) both}
 @keyframes boxReveal{0%{opacity:0;transform:scale(.35) rotate(-9deg)}65%{opacity:1;transform:scale(1.08) rotate(2deg)}100%{transform:scale(1) rotate(0)}}
 #scene2 .girls img:nth-child(1){transform:rotate(-3deg)}
@@ -169,8 +185,7 @@ h1,h2,p{margin:0}
 @keyframes fanCenter{50%{transform:translateY(-10px) scale(1.025)}}
 @keyframes fanRight{50%{transform:translateY(-6px) rotate(15deg)}}
 #scene3 .scratch-intro{filter:drop-shadow(0 12px 18px #000b) drop-shadow(0 0 14px #ff5b8355)}
-.scratch-wrap{border:1px solid #ffe5f1aa;box-shadow:0 0 0 5px #ff5b8312,0 16px 38px #000b,0 0 28px #ff477a33}
-.scratch-wrap:after{content:"";position:absolute;inset:0;z-index:4;pointer-events:none;border:1px solid #ffffff55;border-radius:inherit;box-shadow:inset 0 0 22px #ffffff22}
+.scratch-wrap{box-shadow:0 16px 38px #000b,0 0 28px #ff477a33}
 .scratch-hint{filter:drop-shadow(0 2px 4px #fff8)}
 .scratch-progress{height:10px!important;border:1px solid #ffffff28;box-shadow:0 0 16px #ff285733,inset 0 1px 3px #0009}
 .scratch-progress>i{background:linear-gradient(90deg,#ff2857,#ff8cab,#ffd16b)!important;box-shadow:0 0 12px #ff5b83aa;position:relative}
@@ -179,20 +194,22 @@ h1,h2,p{margin:0}
 @keyframes winFloat{50%{translate:0 -9px}}
 #scene5 .eyebrow{color:#ffe08a;border-color:#ffc83d;box-shadow:0 0 20px #ffc83d33}
 #scene6 .final-bg{filter:saturate(1.12) contrast(1.04)}
-#scene6 .final-prize{filter:drop-shadow(0 12px 22px #000b) drop-shadow(0 0 22px #ff4d7a55);animation:finalPrizeFloat 4s ease-in-out infinite}
-@keyframes finalPrizeFloat{50%{transform:translateY(-7px) scale(1.015)}}
 .timer-ring{filter:drop-shadow(0 0 18px #ff4b7833)}
 .timer-number{text-shadow:0 0 20px #ff477a44}
 .star{box-shadow:0 0 8px 2px #ffe69b,0 0 18px #fff8}
 .confetti{box-shadow:0 0 5px #ffffff44}
 @media (max-height:620px){.copy{animation:none}.cta:before{animation-duration:5s}}
-@media (prefers-reduced-motion:reduce){.copy,.eyebrow,.cta:before,#scene3 .fan img,#scene5 .win-card,#scene6 .final-prize{animation:none!important}}
-/* =============== END VISUAL POLISH 2.0 =============== */
+@media (prefers-reduced-motion:reduce){.copy,.eyebrow,.cta:before,#scene3 .fan img,#scene5 .win-card{animation:none!important}}
+/* =============== END VISUAL =============== */
 
 </style>
 </head>
 <body>
 <main id="game" aria-label="Surprise gift playable advertisement">
+  <button class="sound-toggle" id="soundToggle" type="button" aria-label="Mute sound" aria-pressed="false">
+    <svg class="sound-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+    <svg class="sound-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m16 9 5 6"/><path d="m21 9-5 6"/></svg>
+  </button>
 
   <!-- SCENE 1 -->
   <section class="scene active" id="scene1">
@@ -201,26 +218,26 @@ h1,h2,p{margin:0}
       <img class="asset gift-base" src="assets/gift-box.png" alt="">
       <img class="asset gift-lid" src="assets/gift-lid.png" alt="">
     </div>
-    <img class="asset hand" src="assets/hand.png" alt="">
+    <img class="asset hand-tap" src="assets/hand.png" alt="Tap">
+
     <div class="copy">
-      <span class="eyebrow">♙ 1 gift waiting</span>
-      <h1 class="headline">You’ve got<br>a surprise gift</h1>
+      <span class="eyebrow">🎁 1 gift waiting</span>
+      <h1 class="headline">You’ve got<br>a surprise gift!</h1>
       <p class="subline">Tap the box to open it and see what’s inside.</p>
     </div>
-    <button class="cta" id="openGift">Open my gift</button>
   </section>
 
   <!-- SCENE 2 -->
   <section class="scene" id="scene2">
     <div class="bg-glow"></div><div class="stage-glow" aria-hidden="true"></div><div class="rays"></div><div class="confetti-layer" data-confetti></div>
     <img class="asset lid-fly" src="assets/gift-lid.png" alt="">
-    <img class="asset box-open" src="assets/gift-open.png" alt="Continue to the scratch card" role="button" tabindex="0">
+    <img class="asset box-open" src="assets/gift-open.png" alt="">
     <img class="asset prize-card" src="assets/prize-card.png" alt="">
     <div class="girls">
       <img src="assets/scene2-girl-1.png" alt=""><img src="assets/scene2-girl-2.png" alt="">
     </div>
     <div class="copy">
-      <span class="eyebrow">♙ Gift opened!</span>
+      <span class="eyebrow">🎁 Gift opened!</span>
       <h1 class="headline">Boom! A scratch<br>card for you</h1>
       <p class="subline">Scratch the foil to reveal your prize.</p>
     </div>
@@ -231,10 +248,10 @@ h1,h2,p{margin:0}
   <section class="scene" id="scene3">
     <div class="bg-glow"></div><div class="stars" data-stars></div>
     <div class="fan"><img src="assets/scene3-girl-1.png" alt=""><img src="assets/scene3-girl-2.png" alt=""><img src="assets/scene3-girl-3.png" alt=""></div>
-    <img class="scratch-intro" src="assets/scratch-card.png" alt="Scratch card — go to the scratch scene" role="button" tabindex="0">
-    <div class="copy bottom">
-      <span class="eyebrow">♙ Free gift inside</span>
-      <h2 class="headline" style="margin-top:4%">Scratch &amp; unlock<br>free chapters</h2>
+    <img class="scratch-intro" src="assets/scratch-card.png" alt="">
+    <div class="copy">
+      <span class="eyebrow">🎁 Free gift inside</span>
+      <h2 class="headline" style="margin-top:2%">Scratch &amp; unlock<br>free chapters</h2>
       <p class="subline">Your free chapters are waiting for you.</p>
     </div>
     <button class="cta" id="toScratch">Scratch my card</button>
@@ -254,7 +271,7 @@ h1,h2,p{margin:0}
     </div>
     <div class="scratch-progress"><i id="scratchBar"></i></div>
     <div class="progress-label" id="scratchPercent">Start scratching · 0%</div>
-    <button class="cta" id="scratchDisabled" disabled>Scratch to continue</button>
+    <button class="cta" id="scratchActionBtn">Scratch to continue</button>
   </section>
 
   <!-- SCENE 5 -->
@@ -266,7 +283,7 @@ h1,h2,p{margin:0}
       <h1 class="headline" style="margin-top:3%">Congratulations,<br>you won!</h1>
       <p class="subline">Your free chapters are unlocked</p>
     </div>
-    <img class="win-card" src="assets/win-card.png" alt="Claim your prize" role="button" tabindex="0">
+    <img class="win-card" src="assets/win-card.png" alt="">
     <div class="scratch-progress"><i style="width:100%"></i></div>
     <div class="progress-label">Prize unlocked · 100%</div>
     <button class="cta" id="toFinal">Claim my prize</button>
@@ -317,7 +334,7 @@ h1,h2,p{margin:0}
   const $$ = (s, root=document) => [...root.querySelectorAll(s)];
   const scenes = $$(".scene");
   let currentScene = 1;
-  let audioCtx = null, musicAudio = null, scratchAudio = null;
+  let audioCtx = null, audioMasterGain = null, musicAudio = null, scratchAudio = null, soundMuted = false;
   let timerRemaining = 599, timerStarted = false, timerInterval = null;
   const GAME_URL = "https://example.com"; // Посилання на 1 епізод
 
@@ -334,6 +351,11 @@ h1,h2,p{margin:0}
       const Ctx = window.AudioContext || window.webkitAudioContext;
       if(!Ctx) return;
       audioCtx ||= new Ctx();
+      if(!audioMasterGain){
+        audioMasterGain = audioCtx.createGain();
+        audioMasterGain.gain.value = soundMuted ? 0 : 1;
+        audioMasterGain.connect(audioCtx.destination);
+      }
       if(audioCtx.state==="suspended") audioCtx.resume();
       const now = audioCtx.currentTime;
       const tones = type==="win" ? [523,659,784,1047] : type==="pop" ? [220,440,660] : [660,880];
@@ -344,7 +366,7 @@ h1,h2,p{margin:0}
         gain.gain.setValueAtTime(.0001, now + i * .075);
         gain.gain.exponentialRampToValueAtTime(type==="win" ? .12 : .055, now + i * .075 + .015);
         gain.gain.exponentialRampToValueAtTime(.0001, now + i * .075 + .22);
-        osc.connect(gain); gain.connect(audioCtx.destination); 
+        osc.connect(gain); gain.connect(audioMasterGain); 
         osc.start(now + i * .075); osc.stop(now + i * .075 + .24);
       });
     }catch(e){}
@@ -354,8 +376,9 @@ h1,h2,p{margin:0}
     scratchAudio ||= new Audio("assets/scratch.mp3");
     scratchAudio.loop = true;
     scratchAudio.volume = .35;
+    scratchAudio.muted = soundMuted;
     if(scratchAudio.paused){
-      scratchAudio.play().catch(error => console.error("Could not play scratch sound:", error));
+      scratchAudio.play().catch(error => {});
     }
   }
 
@@ -370,8 +393,19 @@ h1,h2,p{margin:0}
     musicAudio = new Audio("assets/music.mp3"); 
     musicAudio.loop = true; 
     musicAudio.volume = .32;
+    musicAudio.muted = soundMuted;
     musicAudio.play().catch(()=>{ musicAudio = null; });
   }
+
+  $("#soundToggle").addEventListener("click", e => {
+    soundMuted = !soundMuted;
+    const button = e.currentTarget;
+    button.setAttribute("aria-pressed", String(soundMuted));
+    button.setAttribute("aria-label", soundMuted ? "Turn sound on" : "Mute sound");
+    if(audioMasterGain) audioMasterGain.gain.setTargetAtTime(soundMuted ? 0 : 1, audioCtx.currentTime, .02);
+    if(musicAudio) musicAudio.muted = soundMuted;
+    if(scratchAudio) scratchAudio.muted = soundMuted;
+  });
 
   function addStars(){
     $$("[data-stars]").forEach(layer=>{
@@ -411,44 +445,18 @@ h1,h2,p{margin:0}
     setTimeout(() => sound("win"), 420);
   }
 
-  $("#openGift").addEventListener("click", openGift);
   $("#giftBoxClick").addEventListener("click", openGift);
+  
   $("#toIntro").addEventListener("click", () => { sound("pop"); showScene(3); });
-  const scene2Gift = $("#scene2 .box-open");
-  scene2Gift.addEventListener("click", () => { sound("pop"); showScene(3); });
-  scene2Gift.addEventListener("keydown", e => {
-    if(e.key === "Enter" || e.key === " "){
-      e.preventDefault();
-      sound("pop");
-      showScene(3);
-    }
-  });
   $("#toScratch").addEventListener("click", () => { sound("pop"); showScene(4); });
-  const scratchIntro = $("#scene3 .scratch-intro");
-  const openScratchScene = () => { sound("pop"); showScene(4); };
-  scratchIntro.addEventListener("click", openScratchScene);
-  scratchIntro.addEventListener("keydown", e => {
-    if(e.key === "Enter" || e.key === " "){
-      e.preventDefault();
-      openScratchScene();
-    }
-  });
   $("#toFinal").addEventListener("click", () => { sound("win"); showScene(6); });
-  const winCard = $("#scene5 .win-card");
-  const openFinalScene = () => { sound("win"); showScene(6); };
-  winCard.addEventListener("click", openFinalScene);
-  winCard.addEventListener("keydown", e => {
-    if(e.key === "Enter" || e.key === " "){
-      e.preventDefault();
-      openFinalScene();
-    }
-  });
   
   $("#claimFinal").addEventListener("click", () => {
     window.location.href = GAME_URL;
   });
 
   let scratchReady = false, scratching = false, lastPoint = null, scratchCheckAt = 0, scratched = 0;
+  let autoScratchInterval = null;
   const canvas = $("#scratchCanvas"), ctx = canvas.getContext("2d", { willReadFrequently: true });
 
   function initScratch(){
@@ -473,7 +481,7 @@ h1,h2,p{margin:0}
     scratched = 0; 
     scratchReady = true; 
     $("#scratchBar").style.width = "0%"; 
-    $("#scratchPercent").textContent = "Start scratching · 0%";
+    $("#scratchPercent").textContent = "Start scratching · 0% (or hold button)";
     $("#scratchHint").style.display = "block";
   }
 
@@ -506,7 +514,7 @@ h1,h2,p{margin:0}
     }
   }
 
-  function measureScratch(){
+  function measureScratch(completeAtThreshold = true){
     if(!scratchReady) return;
     const w = canvas.width, h = canvas.height;
     const data = ctx.getImageData(0, 0, w, h).data; 
@@ -521,15 +529,22 @@ h1,h2,p{margin:0}
     scratched = Math.min(100, Math.round(clear / total * 100));
     $("#scratchBar").style.width = scratched + "%";
     $("#scratchPercent").textContent = "Keep going · " + scratched + "%";
-    if(scratched >= 70){
-      scratchReady = false; 
-      stopScratchSound();
-      ctx.clearRect(0, 0, w, h);
-      $("#scratchPercent").textContent = "Prize unlocked · 100%";
-      $("#scratchBar").style.width = "100%";
-      sound("win");
-      setTimeout(() => { addConfetti(); showScene(5); }, 500);
+    if(scratched >= 70 && completeAtThreshold){
+      finishScratch();
     }
+  }
+
+  function finishScratch(){
+    if(!scratchReady) return;
+    scratchReady = false; 
+    stopScratchSound();
+    if(autoScratchInterval) clearInterval(autoScratchInterval);
+    const w = canvas.width, h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+    $("#scratchPercent").textContent = "Prize unlocked · 100%";
+    $("#scratchBar").style.width = "100%";
+    sound("win");
+    setTimeout(() => { addConfetti(); showScene(5); }, 500);
   }
 
   canvas.addEventListener("pointerdown", e => {
@@ -552,6 +567,47 @@ h1,h2,p{margin:0}
   canvas.addEventListener("pointerup", stopScratch);
   canvas.addEventListener("pointercancel", stopScratch);
   canvas.addEventListener("lostpointercapture", stopScratch);
+
+  const scratchBtn = $("#scratchActionBtn");
+  
+  function startAutoScratch(e) {
+    if(!scratchReady) return;
+    e.preventDefault();
+    startScratchSound();
+    
+    if(autoScratchInterval) clearInterval(autoScratchInterval);
+    let stepCount = 0;
+    const steps = 30;
+    autoScratchInterval = setInterval(() => {
+      if(!scratchReady) {
+        clearInterval(autoScratchInterval);
+        return;
+      }
+      const r = canvas.getBoundingClientRect();
+      stepCount += 1;
+      const erasedHeight = Math.min(r.height, r.height * stepCount / steps);
+      ctx.clearRect(0, r.height - erasedHeight, r.width, erasedHeight);
+      $("#scratchHint").style.display = "none";
+      measureScratch(false);
+      if(stepCount >= steps) {
+        finishScratch();
+      }
+    }, 80);
+  }
+
+  function stopAutoScratch(e) {
+    if(autoScratchInterval) {
+      clearInterval(autoScratchInterval);
+      autoScratchInterval = null;
+    }
+    stopScratchSound();
+  }
+
+  scratchBtn.addEventListener("pointerdown", startAutoScratch);
+  scratchBtn.addEventListener("pointerup", stopAutoScratch);
+  scratchBtn.addEventListener("pointerleave", stopAutoScratch);
+  scratchBtn.addEventListener("pointercancel", stopAutoScratch);
+
   window.addEventListener("resize", () => { if(currentScene === 4) initScratch(); });
 
   function startTimer(){
