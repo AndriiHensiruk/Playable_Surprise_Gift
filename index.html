@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no" />
 <meta name="theme-color" content="#100d13" />
-<title>Surprise Gift</title>
+<title>Surprise_Gift</title>
 <style>
 :root{
   --bg:#100d13; --pink:#ff2857; --pink2:#ff5b83; --gold:#ffc83d;
@@ -215,10 +215,10 @@ h1,h2,p{margin:0}
   <section class="scene active" id="scene1">
     <div class="bg-glow"></div><div class="stars" data-stars></div>
     <div class="gift-wrap" id="giftBoxClick">
-      <img class="asset gift-base" src="assets/gift-box.png" alt="">
-      <img class="asset gift-lid" src="assets/gift-lid.png" alt="">
+      <img class="asset gift-base" src="assets/gift-box.webp" alt="">
+      <img class="asset gift-lid" src="assets/gift-lid.webp" alt="">
     </div>
-    <img class="asset hand-tap" src="assets/hand.png" alt="Tap">
+    <img class="asset hand-tap" src="assets/hand.webp" alt="Tap">
 
     <div class="copy">
       <span class="eyebrow">🎁 1 gift waiting</span>
@@ -230,11 +230,11 @@ h1,h2,p{margin:0}
   <!-- SCENE 2 -->
   <section class="scene" id="scene2">
     <div class="bg-glow"></div><div class="stage-glow" aria-hidden="true"></div><div class="rays"></div><div class="confetti-layer" data-confetti></div>
-    <img class="asset lid-fly" src="assets/gift-lid.png" alt="">
-    <img class="asset box-open" src="assets/gift-open.png" alt="">
-    <img class="asset prize-card" src="assets/prize-card.png" alt="">
+    <img class="asset lid-fly" src="assets/gift-lid.webp" alt="">
+    <img class="asset box-open" src="assets/gift-open.webp" alt="">
+    <img class="asset prize-card" src="assets/prize-card.webp" alt="">
     <div class="girls">
-      <img src="assets/scene2-girl-1.png" alt=""><img src="assets/scene2-girl-2.png" alt="">
+      <img src="assets/scene2-girl-1.webp" alt=""><img src="assets/scene2-girl-2.webp" alt="">
     </div>
     <div class="copy">
       <span class="eyebrow">🎁 Gift opened!</span>
@@ -247,8 +247,8 @@ h1,h2,p{margin:0}
   <!-- SCENE 3 -->
   <section class="scene" id="scene3">
     <div class="bg-glow"></div><div class="stars" data-stars></div>
-    <div class="fan"><img src="assets/scene3-girl-1.png" alt=""><img src="assets/scene3-girl-2.png" alt=""><img src="assets/scene3-girl-3.png" alt=""></div>
-    <img class="scratch-intro" src="assets/scratch-card.png" alt="">
+    <div class="fan"><img src="assets/scene3-girl-1.webp" alt=""><img src="assets/scene3-girl-2.webp" alt=""><img src="assets/scene3-girl-3.webp" alt=""></div>
+    <img class="scratch-intro" src="assets/scratch-card.webp" alt="">
     <div class="copy">
       <span class="eyebrow">🎁 Free gift inside</span>
       <h2 class="headline" style="margin-top:2%">Scratch &amp; unlock<br>free chapters</h2>
@@ -265,7 +265,7 @@ h1,h2,p{margin:0}
       <p class="subline">Swipe your finger across the card</p>
     </div>
     <div class="scratch-wrap" id="scratchWrap">
-      <img class="scratch-under" src="assets/scratch-prize.png" alt="">
+      <img class="scratch-under" src="assets/scratch-prize.webp" alt="">
       <canvas class="scratch-cover" id="scratchCanvas"></canvas>
       <div class="scratch-hint" id="scratchHint">SCRATCH HERE</div>
     </div>
@@ -283,7 +283,7 @@ h1,h2,p{margin:0}
       <h1 class="headline" style="margin-top:3%">Congratulations,<br>you won!</h1>
       <p class="subline">Your free chapters are unlocked</p>
     </div>
-    <img class="win-card" src="assets/win-card.png" alt="">
+    <img class="win-card" src="assets/win-card.webp" alt="">
     <div class="scratch-progress"><i style="width:100%"></i></div>
     <div class="progress-label">Prize unlocked · 100%</div>
     <button class="cta" id="toFinal">Claim my prize</button>
@@ -291,7 +291,7 @@ h1,h2,p{margin:0}
 
   <!-- SCENE 6 -->
   <section class="scene" id="scene6">
-    <img class="final-bg" src="assets/final-bg.png" alt="">
+    <img class="final-bg" src="assets/final-bg.webp" alt="">
     <div class="stars" data-stars></div>
     
     <div class="final-copy">
@@ -336,7 +336,7 @@ h1,h2,p{margin:0}
   let currentScene = 1;
   let audioCtx = null, audioMasterGain = null, musicAudio = null, scratchAudio = null, soundMuted = false;
   let timerRemaining = 599, timerStarted = false, timerInterval = null;
-  const GAME_URL = "https://example.com"; // Посилання на 1 епізод
+  const GAME_URL = "https://honeytoons.com/comic/roxys-journey-sp/prologue"; // Посилання на 1 епізод
 
   function showScene(n){
     if (currentScene === n) return;
